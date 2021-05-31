@@ -51,5 +51,5 @@ const satursdayHoursBetween = [
 ];
 
 const satursdayHours = [10, 13, 14, 15, 16, 19, 20];
-setIntervalAsync(main, 10000);
+setIntervalAsync(main, 600 * 1000);
 console.log(`is chaabes ${isSaturday(new Date())}`);
