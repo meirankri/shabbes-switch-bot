@@ -29,7 +29,7 @@ const main = () => {
   const dateFormated = format(date, 'H.m');
   const hourAndMinNow = parseFloat(dateFormated);
 
-  if (isSunday(date)) {
+  if (isSaturday(date)) {
     const hourToOpen = satursdayHoursBetween.map(
       hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
     );
