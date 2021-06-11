@@ -28,7 +28,7 @@ const main = () => {
   const date = new Date();
   const dateFormated = format(date, 'H.m');
   const hourAndMinNow = parseFloat(dateFormated);
-
+  console.log(satursdayHoursBetween);
   if (isSaturday(date)) {
     const hourToOpen = satursdayHoursBetween.map(
       hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
@@ -43,13 +43,15 @@ const main = () => {
 };
 
 const satursdayHoursBetween = [
-  { startAt: 9.45, endAt: 10.3 },
-  { startAt: 13, endAt: 13.3 },
-  { startAt: 14.3, endAt: 15.1 },
+  { startAt: 9.45, endAt: 11.1 },
+  { startAt: 12.3, endAt: 12.5 },
+  // { startAt: 13, endAt: 13.3 },
+  { startAt: 14.45, endAt: 15.2 },
   { startAt: 16.4, endAt: 17 },
-  { startAt: 18.45, endAt: 19.3 },
+  { startAt: 19, endAt: 19.3 },
 ];
 
 const satursdayHours = [10, 13, 14, 15, 16, 19, 20];
 setIntervalAsync(main, 600 * 1000);
 console.log(`is chaabes ${isSaturday(new Date())}`);
+console.log(satursdayHoursBetween);
