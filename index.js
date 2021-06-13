@@ -1,8 +1,9 @@
 const axios = require('axios');
 const { setIntervalAsync } = require('set-interval-async/dynamic');
 const { isSaturday, isSunday, format } = require('date-fns');
-
-const { token, bot1, bot2 } = require('./keys.json');
+const dotenv = require('dotenv');
+dotenv.config();
+const { token, bot1, bot2 } = process.env;
 
 const press = botId => {
   console.log('preessed', botId);
@@ -54,4 +55,6 @@ const satursdayHoursBetween = [
 const satursdayHours = [10, 13, 14, 15, 16, 19, 20];
 setIntervalAsync(main, 600 * 1000);
 console.log(`is chaabes ${isSaturday(new Date())}`);
+console.log(token);
+
 console.log(satursdayHoursBetween);
