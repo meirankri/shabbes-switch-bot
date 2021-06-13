@@ -30,6 +30,11 @@ const main = () => {
   const dateFormated = format(date, 'H.m');
   const hourAndMinNow = parseFloat(dateFormated);
   console.log(satursdayHoursBetween);
+  if (isSunday(date)) {
+    press(bot1).then(() => {
+      setTimeout(() => press(bot2), 5000);
+    });
+  }
   if (isSaturday(date)) {
     const hourToOpen = satursdayHoursBetween.map(
       hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
