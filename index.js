@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { setIntervalAsync } = require('set-interval-async/dynamic');
-const { isSaturday, isSunday, format } = require('date-fns');
+const { isSaturday, isWednesday, format } = require('date-fns');
 const dotenv = require('dotenv');
 dotenv.config();
 const { token, bot1, bot2 } = process.env;
@@ -30,7 +30,7 @@ const main = () => {
   const dateFormated = format(date, 'H.m');
   const hourAndMinNow = parseFloat(dateFormated);
   console.log(satursdayHoursBetween);
-  if (isSunday(date)) {
+  if (isWednesday(date)) {
     press(bot1).then(() => {
       setTimeout(() => press(bot2), 5000);
     });
