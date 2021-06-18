@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon index",
-    "start": "nodemon index"
+    "start": "nodemon index",
+		"scale1":"heroku scale worker=1",
+		"scale0":"heroku scale worker=0"
   },
   "dependencies": {
     "axios": "^0.21.1",
