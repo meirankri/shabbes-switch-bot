@@ -32,7 +32,7 @@ const utcParisHourOffset = () => {
 const main = () => {
   const date = new Date();
   const dateFormated = format(date, 'H.m');
-  const hourAndMinNow = parseFloat(dateFormated);
+  const hourAndMinNow = parseFloat(dateFormated) + utcParisHourOffset();
   console.log(satursdayHoursBetween);
 
   if (isSaturday(date)) {
@@ -62,13 +62,7 @@ const satursdayHoursBetween = [
 const satursdayHours = [10, 13, 14, 15, 16, 19, 20];
 setIntervalAsync(main, 600 * 1000);
 console.log(`is chaabes ${isSaturday(new Date())}`);
-const date = new Date();
-const dateFormated = format(date, 'H.m');
-const hourAndMinNow = parseFloat(dateFormated) + utcParisHourOffset();
-const hourToOpen = satursdayHoursBetween.map(
-  hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
-);
-console.log(hourAndMinNow, hourToOpen);
+
 press(bot1).then(() => {
   setTimeout(() => press(bot2), 5000);
 });
