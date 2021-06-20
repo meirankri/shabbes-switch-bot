@@ -2,6 +2,7 @@ const axios = require('axios');
 const { setIntervalAsync } = require('set-interval-async/dynamic');
 const { isSaturday, isFriday, format } = require('date-fns');
 const dotenv = require('dotenv');
+const { getTimezoneOffset } = require('date-fns-tz');
 dotenv.config();
 const { token, bot1, bot2 } = process.env;
 
@@ -23,6 +24,9 @@ const press = botId => {
     )
     .then(res => console.log('res', res.data))
     .catch(e => console.error('err', e));
+};
+const utcParisHourOffset = () => {
+  return getTimezoneOffset('Europe/Paris', new Date()) / 3600000;
 };
 
 const main = () => {
@@ -60,7 +64,7 @@ setIntervalAsync(main, 600 * 1000);
 console.log(`is chaabes ${isSaturday(new Date())}`);
 const date = new Date();
 const dateFormated = format(date, 'H.m');
-const hourAndMinNow = parseFloat(dateFormated);
+const hourAndMinNow = parseFloat(dateFormated) + utcParisHourOffset();
 const hourToOpen = satursdayHoursBetween.map(
   hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
 );
