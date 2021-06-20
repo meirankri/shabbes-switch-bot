@@ -45,6 +45,7 @@ const main = () => {
 };
 
 const satursdayHoursBetween = [
+  { startAt: 9, endAt: 10.3 },
   { startAt: 9.45, endAt: 10.3 },
   { startAt: 10.5, endAt: 11.2 },
   { startAt: 12.2, endAt: 12.5 },
