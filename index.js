@@ -57,7 +57,10 @@ const satursdayHoursBetween = [
 const satursdayHours = [10, 13, 14, 15, 16, 19, 20];
 setIntervalAsync(main, 600 * 1000);
 console.log(`is chaabes ${isSaturday(new Date())}`);
-
+const date = new Date();
+const dateFormated = format(date, 'H.m');
+const hourAndMinNow = parseFloat(dateFormated);
+console.log(hourAndMinNow);
 press(bot1).then(() => {
   setTimeout(() => press(bot2), 5000);
 });
