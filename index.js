@@ -60,7 +60,10 @@ console.log(`is chaabes ${isSaturday(new Date())}`);
 const date = new Date();
 const dateFormated = format(date, 'H.m');
 const hourAndMinNow = parseFloat(dateFormated);
-console.log(hourAndMinNow);
+const hourToOpen = satursdayHoursBetween.map(
+  hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
+);
+console.log(hourAndMinNow, hourToOpen);
 press(bot1).then(() => {
   setTimeout(() => press(bot2), 5000);
 });
