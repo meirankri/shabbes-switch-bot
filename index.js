@@ -3,6 +3,7 @@ const { setIntervalAsync } = require('set-interval-async/dynamic');
 const { isSaturday, isFriday, format } = require('date-fns');
 const dotenv = require('dotenv');
 const { getTimezoneOffset } = require('date-fns-tz');
+const knex = require('./dbConnection');
 dotenv.config();
 const { token, bot1, bot2 } = process.env;
 
@@ -29,16 +30,20 @@ const utcParisHourOffset = () => {
   return getTimezoneOffset('Europe/Paris', new Date()) / 3600000;
 };
 
-const main = () => {
+const main = async () => {
   const date = new Date();
   const dateFormated = format(date, 'H.m');
   const hourAndMinNow = parseFloat(dateFormated) + utcParisHourOffset();
-  console.log(satursdayHoursBetween);
+  // console.log(satursdayHoursBetween);
+
+  console.log('shabbesHours', satursdayHoursBetween);
 
   if (isSaturday(date)) {
+    console.log('ouech');
     const hourToOpen = satursdayHoursBetween.map(
       hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
     );
+    console.log(hourToOpen);
     if (hourToOpen.includes(true)) {
       press(bot1).then(() => {
         setTimeout(() => press(bot2), 5000);
@@ -56,15 +61,11 @@ const satursdayHoursBetween = [
   { startAt: 13, endAt: 13.3 },
   { startAt: 14.3, endAt: 15.2 },
   { startAt: 16.4, endAt: 17 },
-  { startAt: 19, endAt: 19.3 },
+  { startAt: 19, endAt: 19.45 },
+  { startAt: 20.15, endAt: 21.0 },
 ];
 
-const satursdayHours = [10, 13, 14, 15, 16, 19, 20];
+main();
+
 setIntervalAsync(main, 600 * 1000);
 console.log(`is chaabes ${isSaturday(new Date())}`);
-
-press(bot1).then(() => {
-  setTimeout(() => press(bot2), 5000);
-});
-
-console.log(satursdayHoursBetween);
