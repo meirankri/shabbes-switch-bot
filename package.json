@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "nodemon index",
     "start": "nodemon index",
+    "prod": "pm2 start index.js --name shabbes-bot",
+    "reload": "pm2 reload shabbes-bot",
     "scale1": "heroku scale worker=1",
     "scale0": "heroku scale worker=0"
   },
@@ -18,6 +20,7 @@
     "knex": "^0.95.6",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.7",
+    "pm2": "^5.1.0",
     "set-interval-async": "^2.0.3"
   },
   "engines": {
