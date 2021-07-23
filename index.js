@@ -63,7 +63,6 @@ const satursdayHoursBetween = [
   { startAt: 16.4, endAt: 17 },
   { startAt: 19, endAt: 19.45 },
   { startAt: 20.15, endAt: 21.0 },
-  { startAt: 22.15, endAt: 23.0 },
 ];
 
 main();
