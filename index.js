@@ -38,7 +38,7 @@ const main = async () => {
 
   console.log('shabbesHours', satursdayHoursBetween);
 
-  if (isSaturday(date)) {
+  if (isSaturday(date) || isFriday(date)) {
     console.log('ouech');
     const hourToOpen = satursdayHoursBetween.map(
       hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
@@ -63,6 +63,7 @@ const satursdayHoursBetween = [
   { startAt: 16.4, endAt: 17 },
   { startAt: 19, endAt: 19.45 },
   { startAt: 20.15, endAt: 21.0 },
+  { startAt: 22.15, endAt: 23.0 },
 ];
 
 main();
