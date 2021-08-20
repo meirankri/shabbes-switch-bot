@@ -50,6 +50,18 @@ const main = async () => {
       });
       console.log(date);
     }
+  } else if (isFriday(date)) {
+    console.log('ouech');
+    const hourToOpen = fridayHoursBetween.map(
+      hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
+    );
+    console.log(hourToOpen);
+    if (hourToOpen.includes(true)) {
+      press(bot1).then(() => {
+        setTimeout(() => press(bot2), 5000);
+      });
+      console.log(date);
+    }
   }
 };
 
@@ -64,6 +76,7 @@ const satursdayHoursBetween = [
   { startAt: 19, endAt: 19.45 },
   { startAt: 20.15, endAt: 21.0 },
 ];
+const fridayHoursBetween = [{ startAt: 21.0, endAt: 22.3 }];
 
 main();
 press(bot1);
