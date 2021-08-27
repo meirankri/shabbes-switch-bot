@@ -10,6 +10,7 @@
     "reload": "pm2 reload shabbes-bot",
     "scale1": "heroku scale worker=1",
     "scale0": "heroku scale worker=0",
+    "disableweb": "heroku ps:scale web=0",
     "herokuRestart": "heroku restart -a shabbes-bot2"
   },
   "dependencies": {
