@@ -50,18 +50,6 @@ const main = async () => {
       });
       console.log(date);
     }
-  } else if (isFriday(date)) {
-    console.log('ouech');
-    const hourToOpen = fridayHoursBetween.map(
-      hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
-    );
-    console.log(hourToOpen);
-    if (hourToOpen.includes(true)) {
-      press(bot1).then(() => {
-        setTimeout(() => press(bot2), 5000);
-      });
-      console.log(date);
-    }
   }
 };
 
