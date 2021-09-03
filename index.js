@@ -66,7 +66,6 @@ const main = async () => {
 };
 
 const satursdayHoursBetween = [
-  { startAt: 9, endAt: 10.3 },
   { startAt: 9.45, endAt: 10.3 },
   { startAt: 10.5, endAt: 11.2 },
   { startAt: 12.2, endAt: 12.5 },
@@ -76,7 +75,7 @@ const satursdayHoursBetween = [
   { startAt: 19, endAt: 19.45 },
   { startAt: 20.15, endAt: 21.0 },
 ];
-const fridayHoursBetween = [{ startAt: 21.0, endAt: 22.3 }];
+// const fridayHoursBetween = [{ startAt: 21.0, endAt: 22.3 }];
 
 main();
 press(bot1);
