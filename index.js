@@ -1,6 +1,12 @@
 const axios = require('axios');
 const { setIntervalAsync } = require('set-interval-async/dynamic');
-const { isSaturday, isTuesday, isWednesday, format } = require('date-fns');
+const {
+  isSaturday,
+  isTuesday,
+  isWednesday,
+  isFriday,
+  format,
+} = require('date-fns');
 const dotenv = require('dotenv');
 const { getTimezoneOffset } = require('date-fns-tz');
 const knex = require('./dbConnection');
@@ -41,6 +47,17 @@ const main = async () => {
   if (isSaturday(date)) {
     console.log('ouech');
     const hourToOpen = satursdayHoursBetween.map(
+      hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
+    );
+    console.log(hourToOpen);
+    if (hourToOpen.includes(true)) {
+      press(bot1).then(() => {
+        setTimeout(() => press(bot2), 5000);
+      });
+      console.log(date);
+    }
+  } else if (isFriday(date)) {
+    const hourToOpen = fridayHoursBetween.map(
       hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
     );
     console.log(hourToOpen);
@@ -95,7 +112,10 @@ const rochHoursBetween = [
   { startAt: 21.3, endAt: 22.3 },
 ];
 
-// const fridayHoursBetween = [{ startAt: 21.0, endAt: 22.3 }];
+const fridayHoursBetween = [
+  { startAt: 20, endAt: 20.3 },
+  { startAt: 21.0, endAt: 22.3 },
+];
 
 main();
 press(bot1);
