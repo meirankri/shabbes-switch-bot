@@ -56,7 +56,7 @@ const main = async () => {
       });
       console.log(date);
     }
-  } else if (isFriday(date)) {
+  } else if (isWednesday(date)) {
     const hourToOpen = fridayHoursBetween.map(
       hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
     );
@@ -106,15 +106,16 @@ const satursdayHoursBetween = [
 ];
 
 const rochHoursBetween = [
-  { startAt: 10.5, endAt: 11.3 },
-  { startAt: 17, endAt: 18.3 },
-  { startAt: 19.3, endAt: 20 },
-  { startAt: 21.3, endAt: 22.3 },
+  { startAt: 9, endAt: 11.3 },
+  { startAt: 14, endAt: 14.15 },
+  { startAt: 15, endAt: 15.15 },
+  { startAt: 16, endAt: 16.15 },
+  { startAt: 17, endAt: 17.15 },
 ];
 
 const fridayHoursBetween = [
   { startAt: 20, endAt: 20.3 },
-  { startAt: 21.0, endAt: 22.3 },
+  { startAt: 21.3, endAt: 23 },
 ];
 
 main();
