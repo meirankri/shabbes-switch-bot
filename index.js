@@ -5,6 +5,7 @@ const {
   isTuesday,
   isWednesday,
   isFriday,
+  isMonday,
   format,
 } = require('date-fns');
 const dotenv = require('dotenv');
@@ -56,8 +57,8 @@ const main = async () => {
       });
       console.log(date);
     }
-  } else if (isWednesday(date)) {
-    const hourToOpen = fridayHoursBetween.map(
+  } else if (isMonday(date)) {
+    const hourToOpen = mondayHoursBetween.map(
       hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
     );
     console.log(hourToOpen);
@@ -105,11 +106,17 @@ const satursdayHoursBetween = [
 ];
 
 const rochHoursBetween = [
-  { startAt: 9, endAt: 11.3 },
-  { startAt: 14, endAt: 14.15 },
-  { startAt: 15, endAt: 15.15 },
-  { startAt: 16, endAt: 16.15 },
-  { startAt: 17, endAt: 17.15 },
+  { startAt: 9.45, endAt: 11.3 },
+  { startAt: 13, endAt: 14.15 },
+  { startAt: 16, endAt: 16.3 },
+  { startAt: 17, endAt: 17.3 },
+  { startAt: 19.15, endAt: 19.5 },
+  { startAt: 22, endAt: 23.3 },
+];
+
+const mondayHoursBetween = [
+  { startAt: 20, endAt: 20.3 },
+  { startAt: 22, endAt: 23.55 },
 ];
 
 const fridayHoursBetween = [
