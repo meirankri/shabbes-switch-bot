@@ -123,12 +123,12 @@ const rochHoursBetween = [
   { startAt: 16, endAt: 16.3 },
   { startAt: 17, endAt: 17.3 },
   { startAt: 19.15, endAt: 19.5 },
-  { startAt: 22, endAt: 23.3 },
+  { startAt: 22, endAt: 23.55 },
 ];
 
 const mondayHoursBetween = [
-  { startAt: 20, endAt: 20.3 },
-  { startAt: 22, endAt: 23.55 },
+  { startAt: 19.45, endAt: 20.15 },
+  { startAt: 21, endAt: 23.55 },
 ];
 
 const fridayHoursBetween = [
