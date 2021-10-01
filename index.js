@@ -57,41 +57,6 @@ const main = async () => {
       });
       console.log(date);
     }
-  } else if (isMonday(date)) {
-    const hourToOpen = mondayHoursBetween.map(
-      hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
-    );
-    console.log(hourToOpen);
-    if (hourToOpen.includes(true)) {
-      press(bot1).then(() => {
-        setTimeout(() => press(bot2), 5000);
-      });
-      console.log(date);
-    }
-  } else if (isTuesday(date)) {
-    console.log('ouech');
-    const hourToOpen = rochHoursBetween.map(
-      hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
-    );
-    console.log(hourToOpen);
-    if (hourToOpen.includes(true)) {
-      press(bot1).then(() => {
-        setTimeout(() => press(bot2), 5000);
-      });
-      console.log(date);
-    }
-  } else if (isWednesday(date)) {
-    console.log('ouech');
-    const hourToOpen = rochHoursBetween.map(
-      hours => hours.startAt < hourAndMinNow && hours.endAt > hourAndMinNow,
-    );
-    console.log(hourToOpen);
-    if (hourToOpen.includes(true)) {
-      press(bot1).then(() => {
-        setTimeout(() => press(bot2), 5000);
-      });
-      console.log(date);
-    }
   } else if (isFriday(date)) {
     console.log('ouech');
     const hourToOpen = fridayHoursBetween.map(
@@ -132,8 +97,8 @@ const mondayHoursBetween = [
 ];
 
 const fridayHoursBetween = [
-  { startAt: 19.45, endAt: 20.15 },
-  { startAt: 21.3, endAt: 23 },
+  // { startAt: 19.45, endAt: 20.15 },
+  // { startAt: 21.3, endAt: 23 },
 ];
 
 main();
