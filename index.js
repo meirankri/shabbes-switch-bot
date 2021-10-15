@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { setIntervalAsync } = require('set-interval-async/dynamic');
+const {setIntervalAsync} = require('set-interval-async/dynamic');
 const {
   isSaturday,
   isTuesday,
@@ -9,10 +9,10 @@ const {
   format,
 } = require('date-fns');
 const dotenv = require('dotenv');
-const { getTimezoneOffset } = require('date-fns-tz');
+const {getTimezoneOffset} = require('date-fns-tz');
 const knex = require('./dbConnection');
 dotenv.config();
-const { token, bot1, bot2 } = process.env;
+const {token, bot1, bot2} = process.env;
 
 const press = botId => {
   console.log('preessed', botId);
@@ -73,27 +73,26 @@ const main = async () => {
 };
 
 const satursdayHoursBetween = [
-  { startAt: 9.45, endAt: 10.3 },
-  { startAt: 10.5, endAt: 11.2 },
-  { startAt: 12.2, endAt: 12.5 },
-  { startAt: 14, endAt: 14.3 },
-  { startAt: 16.4, endAt: 17.15 },
-  { startAt: 19, endAt: 19.45 },
-  { startAt: 20.15, endAt: 21.0 },
+  {startAt: 10.0, endAt: 11.2},
+  // { startAt: 10.5, endAt: 11.2 },
+  {startAt: 12.45, endAt: 13.15},
+  {startAt: 14.3, endAt: 15.15},
+  {startAt: 16.1, endAt: 16.45},
+  {startAt: 18.1, endAt: 18.45},
 ];
 
 const rochHoursBetween = [
-  { startAt: 9.45, endAt: 11.3 },
-  { startAt: 13, endAt: 14.15 },
-  { startAt: 16, endAt: 16.3 },
-  { startAt: 17, endAt: 17.3 },
-  { startAt: 19.15, endAt: 19.5 },
-  { startAt: 22, endAt: 23.55 },
+  {startAt: 9.45, endAt: 11.3},
+  {startAt: 13, endAt: 14.15},
+  {startAt: 16, endAt: 16.3},
+  {startAt: 17, endAt: 17.3},
+  {startAt: 19.15, endAt: 19.5},
+  {startAt: 22, endAt: 23.55},
 ];
 
 const mondayHoursBetween = [
-  { startAt: 19.45, endAt: 20.15 },
-  { startAt: 21, endAt: 23.55 },
+  {startAt: 19.45, endAt: 20.15},
+  {startAt: 21, endAt: 23.55},
 ];
 
 const fridayHoursBetween = [
