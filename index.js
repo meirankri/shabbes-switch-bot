@@ -73,12 +73,12 @@ const main = async () => {
 };
 
 const satursdayHoursBetween = [
-  {startAt: 10.0, endAt: 11.2},
+  {startAt: 9.45, endAt: 11.2},
   // { startAt: 10.5, endAt: 11.2 },
   {startAt: 12.45, endAt: 13.15},
   {startAt: 14.0, endAt: 15.15},
-  {startAt: 15.35, endAt: 16.1},
-  {startAt: 17.5, endAt: 18.15},
+  {startAt: 15.1, endAt: 15.4},
+  {startAt: 16.3, endAt: 17.15},
 ];
 
 const rochHoursBetween = [
@@ -96,7 +96,7 @@ const mondayHoursBetween = [
 ];
 
 const fridayHoursBetween = [
-  // { startAt: 19.45, endAt: 20.15 },
+  {startAt: 18.3, endAt: 19.3},
   // { startAt: 21.3, endAt: 23 },
 ];
 
