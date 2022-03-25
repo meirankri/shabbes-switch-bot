@@ -78,7 +78,7 @@ const satursdayHoursBetween = [
   {startAt: 12.45, endAt: 13.15},
   {startAt: 14.0, endAt: 15.15},
   {startAt: 16.1, endAt: 16.45},
-  {startAt: 18.1, endAt: 18.45},
+  {startAt: 18.3, endAt: 19},
 ];
 
 const rochHoursBetween = [
@@ -96,8 +96,8 @@ const mondayHoursBetween = [
 ];
 
 const fridayHoursBetween = [
-  // { startAt: 19.45, endAt: 20.15 },
-  // { startAt: 21.3, endAt: 23 },
+  {startAt: 20, endAt: 21.1},
+  //   { startAt: 21.3, endAt: 23 },
 ];
 
 main();

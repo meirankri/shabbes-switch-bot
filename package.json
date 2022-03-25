@@ -11,8 +11,9 @@
     "scale1": "heroku scale worker=1",
     "scale0": "heroku scale worker=0",
     "disableweb": "heroku ps:scale web=0",
-    "herokuRestart": "heroku restart -a shabes-bot3",
-    "herkouPush": "git push heroku master"
+    "herokuRestart": "heroku restart -a shabes-bot2",
+    "herkouPush": "git push heroku master",
+    "herokuChangeApp": "heroku git:remote -a"
   },
   "dependencies": {
     "axios": "^0.21.1",
