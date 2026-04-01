@@ -17,6 +17,12 @@ export const generateSign = (token: string, secret: string): SignatureData => {
   };
 };
 
+interface SwitchBotApiResponse {
+  statusCode: number;
+  body: Record<string, unknown>;
+  message: string;
+}
+
 // Fonction pour envoyer une commande à un SwitchBot
 const sendCommand = async (
   token: string,
@@ -24,11 +30,15 @@ const sendCommand = async (
   deviceId: string,
   command: string,
   parameter: string = 'default'
-): Promise<{ statusCode: number; body: { message: string } }> => {
+): Promise<SwitchBotApiResponse> => {
   const { sign, t, nonce } = generateSign(token, secret);
 
+  const url = `https://api.switch-bot.com/v1.1/devices/${deviceId}/commands`;
+  console.log(`[SwitchBot] POST ${url}`);
+  console.log(`[SwitchBot] Command: ${command}, Parameter: ${parameter}`);
+
   const response = await axios.post(
-    `https://api.switch-bot.com/v1.1/devices/${deviceId}/commands`,
+    url,
     {
       command,
       parameter,
@@ -48,20 +58,52 @@ const sendCommand = async (
   return response.data;
 };
 
+export interface PressResult {
+  botId: string;
+  statusCode: number;
+  message: string;
+  success: boolean;
+  timestamp: string;
+}
+
 // Fonction pour presser un bot
-export const press = async (token: string, secret: string, botId: string): Promise<{ statusCode: number; body: { message: string } }> => {
-  console.log('Pression sur le bot:', botId);
+export const press = async (token: string, secret: string, botId: string): Promise<PressResult> => {
+  const timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] Pression sur le bot: ${botId}`);
   try {
     const res = await sendCommand(token, secret, botId, 'press');
-    console.log('✅ Réponse:', res);
-    return res;
+    const isSuccess = res.statusCode === 100;
+    const logPrefix = isSuccess ? '✅' : '⚠️';
+    console.log(`[${timestamp}] ${logPrefix} Bot ${botId} - statusCode: ${res.statusCode}, message: ${res.message}`);
+    console.log(`[${timestamp}] Réponse complète:`, JSON.stringify(res));
+    return {
+      botId,
+      statusCode: res.statusCode,
+      message: res.message,
+      success: isSuccess,
+      timestamp,
+    };
   } catch (error) {
+    const errorTimestamp = new Date().toISOString();
     if (axios.isAxiosError(error)) {
-      console.error('❌ Erreur:', error.response?.data || error.message);
-    } else {
-      console.error('❌ Erreur:', error);
+      console.error(`[${errorTimestamp}] ❌ Bot ${botId} - Erreur HTTP ${error.response?.status}:`, JSON.stringify(error.response?.data));
+      return {
+        botId,
+        statusCode: error.response?.status ?? 0,
+        message: error.response?.data?.message ?? error.message,
+        success: false,
+        timestamp: errorTimestamp,
+      };
     }
-    throw error;
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error(`[${errorTimestamp}] ❌ Bot ${botId} - Erreur:`, errorMessage);
+    return {
+      botId,
+      statusCode: 0,
+      message: errorMessage,
+      success: false,
+      timestamp: errorTimestamp,
+    };
   }
 };
 
