@@ -1,7 +1,7 @@
 {
   "name": "switch-bot",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "license": "MIT",
   "scripts": {
     "dev": "nodemon index",
@@ -13,7 +13,9 @@
     "disableweb": "heroku ps:scale web=0",
     "herokuRestart": "heroku restart -a shabes-bot2",
     "herkouPush": "git push heroku master",
-    "herokuChangeApp": "heroku git:remote -a"
+    "herokuChangeApp": "heroku git:remote -a",
+    "type-check": "tsc --noEmit",
+    "build": "tsc"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -26,5 +28,10 @@
     "nodemon": "^2.0.7",
     "pm2": "^5.1.0",
     "set-interval-async": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@vercel/node": "^2.0.0",
+    "typescript": "^5.0.0"
   }
 }
